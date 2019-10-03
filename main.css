@@ -1,0 +1,14 @@
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 5px solid rgb(50, 26, 160);
+    margin: auto;
+    padding: 0;
+}
+
+.wrapper {
+    max-width: 700px;
+    margin-right: auto;
+    margin-left: auto;
+}

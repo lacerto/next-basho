@@ -11,13 +11,15 @@ const data = '{"basho_schedule": {"1": {"venue": "Kokugikan", "final_day": "2019
  * @param {string} venue - The venue where the basho is held.
  * @param {string} firstDay - The first day of tha basho as an ISO date string.
  * @param {string} finalDay - The final day of tha basho as an ISO date string.
+ * @param {string} prevBasho - The final day of the previous basho.
  * @param {boolean} started - True if the basho has already started, false otherwise.
  */
-function Basho(description, venue, firstDay, finalDay, started) {
+function Basho(description, venue, firstDay, finalDay, prevBashoFinalDay, started) {
     this.description = description;
     this.venue = venue;
     this.firstDay = firstDay;
     this.finalDay = finalDay;
+    this.prevBashoFinalDay = prevBashoFinalDay;
     this.started = started;
 }
 
@@ -34,6 +36,8 @@ function getNextBasho(currentDate) {
 
     let schedules = {}; // object for storing the schedules by date deltas
     let started = false; // is the basho already underway?
+    let prevBashoDelta = -365;
+    let prevBashoFinalDay = '';
 
     // Loop through the schedule entries and calculate the
     // date deltas. These will be used to decide which basho
@@ -59,6 +63,11 @@ function getNextBasho(currentDate) {
                 schedules = {} // create a new empty object
                 schedules[0] = bashoSchedule; // add only this element
                 break;
+            } else {
+                if (finalDelta > prevBashoDelta) {
+                    prevBashoDelta = finalDelta;
+                    prevBashoFinalDay = bashoSchedule.final_day;
+                }
             }
         }
     }
@@ -72,6 +81,7 @@ function getNextBasho(currentDate) {
         schedules[key].venue,
         schedules[key].first_day,
         schedules[key].final_day,
+        prevBashoFinalDay,
         started
     );
 }

@@ -73,14 +73,15 @@ new Vue({
         venue: '',
         start: '',
         end: '',
+        prevBashoEnd: '',
         started: false
     },
     components: {
         BashoJumbotron
     },
     mounted: function() {
-        //const now = moment();
-        const now = moment('2019-11-10'); // test
+        const now = moment();
+        //const now = moment('2019-09-23'); // test
     
         console.log(`Current date: ${now.format('YYYY-MM-DD')}`);
     
@@ -91,6 +92,7 @@ new Vue({
                 venue: this.venue,
                 firstDay: this.start,
                 finalDay: this.end,
+                prevBashoFinalDay: this.prevBashoEnd,
                 started: this.started
             } = getNextBasho(now));
             if (this.started) {
@@ -98,6 +100,11 @@ new Vue({
                 let finalDay = moment(this.end);
                 this.max = finalDay.diff(firstDay, 'days') + 1;
                 this.value = now.diff(firstDay, 'days') + 1;        
+            } else {
+                let firstDay = moment(this.start);
+                let prevFinalDay = moment(this.prevBashoEnd);
+                this.max = firstDay.diff(prevFinalDay, 'days');
+                this.value = now.diff(prevFinalDay, 'days');
             }
         } catch(error) {
             console.log('Could not get next basho information: ', error);

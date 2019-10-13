@@ -8,6 +8,14 @@ let BashoJumbotron = {
         'progressValue',
         'started'
     ],
+    computed: {
+        daysLeft: function() {
+            return (this.progressMax - this.progressValue);
+        },
+        bashoDay: function() {
+            return `${this.progressValue} / ${this.progressMax}`;
+        }
+    },
     template: `
         <b-jumbotron header="Next Basho" header-level="5" bg-variant="info" text-variant="white">
           <b-container>
@@ -30,6 +38,9 @@ let BashoJumbotron = {
             <b-row v-if="started" class="justify-content-md-center">
               <b-col cols="6">This basho has already started.</b-col>
             </b-row>
+            <b-row v-else class="justify-content-md-center">
+              <b-col cols="6">Days left till next basho:</b-col>
+            </b-row>
             <b-row class="justify-content-md-center">
               <b-col cols="6">
                 <b-progress
@@ -39,10 +50,10 @@ let BashoJumbotron = {
                   height="2rem">
                   <b-progress-bar :value="progressValue">
                     <span v-if="started">
-                      <strong>{{ progressValue }} / {{ progressMax }}</strong>
+                      <strong>{{ bashoDay }}</strong>
                     </span>
                     <span v-else>
-                      <strong>{{ progressMax - progressValue }} days till next basho</strong>
+                      <strong>{{ daysLeft }}</strong>
                     </span>
                   </b-progress-bar>
                 </b-progress>
@@ -69,7 +80,7 @@ new Vue({
     },
     mounted: function() {
         //const now = moment();
-        const now = moment('2019-11-20'); // test
+        const now = moment('2019-11-10'); // test
     
         console.log(`Current date: ${now.format('YYYY-MM-DD')}`);
     

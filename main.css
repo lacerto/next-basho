@@ -5,6 +5,11 @@
     margin-left: auto;
 }
 
-.progress {
-    margin-top: 5px;
+/* These settings prevent stretching the image in the card. */
+.card-img-left {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 200px;
+    height: 189px;
+    object-fit: cover;
 }

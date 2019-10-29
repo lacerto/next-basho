@@ -1,4 +1,4 @@
-let BashoJumbotron = {
+let BashoCard = {
     props: [
         'nextBashoName',
         'venue',
@@ -17,34 +17,41 @@ let BashoJumbotron = {
         }
     },
     template: `
-        <b-jumbotron header="Next Basho" header-level="5" bg-variant="info" text-variant="white">
+        <b-card
+          title="Next Basho"
+          img-src="assets/images/sumo.png"
+          img-alt="Sumo image"
+          img-left
+          border-variant="info"
+          class="mt-5 mx-0 px-0"
+        >
           <b-container>
             <b-row class="justify-content-md-center">
-              <b-col cols="3">Basho name:</b-col>
-              <b-col cols="3">{{ nextBashoName }}</b-col>
+              <b-col cols="5">Basho name:</b-col>
+              <b-col cols="5">{{ nextBashoName }}</b-col>
             </b-row>
             <b-row class="justify-content-md-center">
-              <b-col cols="3">Venue:</b-col>
-              <b-col cols="3">{{ venue }}</b-col>
+              <b-col cols="5">Venue:</b-col>
+              <b-col cols="5">{{ venue }}</b-col>
             </b-row>
             <b-row class="justify-content-md-center">
-              <b-col cols="3">First day:</b-col>
-              <b-col cols="3">{{ firstDay }}</b-col>
+              <b-col cols="5">First day:</b-col>
+              <b-col cols="5">{{ firstDay }}</b-col>
             </b-row>
             <b-row class="justify-content-md-center">
-              <b-col cols="3">Last day:</b-col>
-              <b-col cols="3">{{ finalDay }}</b-col>
+              <b-col cols="5">Last day:</b-col>
+              <b-col cols="5">{{ finalDay }}</b-col>
             </b-row>
             <b-row v-if="started" class="justify-content-md-center">
-              <b-col cols="6">This basho has already started.</b-col>
+              <b-col cols="10">This basho has already started.</b-col>
             </b-row>
             <b-row v-else class="justify-content-md-center">
-              <b-col cols="6">Days left till next basho:</b-col>
+              <b-col cols="10">Days left till next basho:</b-col>
             </b-row>
             <b-row class="justify-content-md-center">
-              <b-col cols="6">
+              <b-col cols="10">
                 <b-progress
-                  class="progress"
+                  class="mt-3"
                   :max="progressMax"
                   striped
                   height="2rem">
@@ -60,7 +67,7 @@ let BashoJumbotron = {
               </b-col>
             </b-row>
           </b-container>
-        </b-jumbotron>
+        </b-card>    
     `
 };
 
@@ -77,7 +84,7 @@ new Vue({
         started: false
     },
     components: {
-        BashoJumbotron
+        BashoCard
     },
     mounted: function() {
         const now = moment();

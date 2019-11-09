@@ -17,57 +17,61 @@ let BashoCard = {
         }
     },
     template: `
-        <b-card
-          title="Next Basho"
-          img-src="assets/images/sumo.png"
-          img-alt="Sumo image"
-          img-left
-          border-variant="info"
-          class="mt-5 mx-0 px-0"
-        >
-          <b-container>
-            <b-row class="justify-content-md-center">
-              <b-col cols="5">Basho name:</b-col>
-              <b-col cols="5">{{ nextBashoName }}</b-col>
-            </b-row>
-            <b-row class="justify-content-md-center">
-              <b-col cols="5">Venue:</b-col>
-              <b-col cols="5">{{ venue }}</b-col>
-            </b-row>
-            <b-row class="justify-content-md-center">
-              <b-col cols="5">First day:</b-col>
-              <b-col cols="5">{{ firstDay }}</b-col>
-            </b-row>
-            <b-row class="justify-content-md-center">
-              <b-col cols="5">Last day:</b-col>
-              <b-col cols="5">{{ finalDay }}</b-col>
-            </b-row>
-            <b-row v-if="started" class="justify-content-md-center">
-              <b-col cols="10">This basho has already started.</b-col>
-            </b-row>
-            <b-row v-else class="justify-content-md-center">
-              <b-col cols="10">Days left till next basho:</b-col>
-            </b-row>
-            <b-row class="justify-content-md-center">
-              <b-col cols="10">
-                <b-progress
-                  class="mt-3"
-                  :max="progressMax"
-                  striped
-                  height="2rem">
-                  <b-progress-bar :value="progressValue">
-                    <span v-if="started">
-                      <strong>{{ bashoDay }}</strong>
-                    </span>
-                    <span v-else>
-                      <strong>{{ daysLeft }}</strong>
-                    </span>
-                  </b-progress-bar>
-                </b-progress>
-              </b-col>
-            </b-row>
-          </b-container>
-        </b-card>    
+      <b-card no-body class="overflow-hidden" style="max-width: 700px;">
+        <b-row no-gutters>
+          <b-col md="4">
+            <div class="text-center">
+              <b-card-img src="assets/images/sumo.png" class="w-auto rounded-0"></b-card-img>
+            </div>
+          </b-col>
+          <b-col md="8">
+            <b-card-body title="Next Basho">
+              <b-container>
+                <b-row class="justify-content-md-center">
+                  <b-col cols="5">Basho name:</b-col>
+                  <b-col cols="5">{{ nextBashoName }}</b-col>
+                </b-row>
+                <b-row class="justify-content-md-center">
+                  <b-col cols="5">Venue:</b-col>
+                  <b-col cols="5">{{ venue }}</b-col>
+                </b-row>
+                <b-row class="justify-content-md-center">
+                  <b-col cols="5">First day:</b-col>
+                  <b-col cols="5">{{ firstDay }}</b-col>
+                </b-row>
+                <b-row class="justify-content-md-center">
+                  <b-col cols="5">Last day:</b-col>
+                  <b-col cols="5">{{ finalDay }}</b-col>
+                </b-row>
+                <b-row v-if="started" class="justify-content-md-center">
+                  <b-col cols="10">This basho has already started.</b-col>
+                </b-row>
+                <b-row v-else class="justify-content-md-center">
+                  <b-col cols="10">Days left till next basho:</b-col>
+                </b-row>
+                <b-row class="justify-content-md-center">
+                  <b-col cols="10">
+                    <b-progress
+                      class="mt-3"
+                      :max="progressMax"
+                      striped
+                      height="2rem">
+                      <b-progress-bar :value="progressValue">
+                        <span v-if="started">
+                          <strong>{{ bashoDay }}</strong>
+                        </span>
+                        <span v-else>
+                          <strong>{{ daysLeft }}</strong>
+                        </span>
+                      </b-progress-bar>
+                    </b-progress>
+                  </b-col>
+                </b-row>
+              </b-container>
+            </b-card-body>
+          </b-col>
+        </b-row>
+      </b-card>    
     `
 };
 

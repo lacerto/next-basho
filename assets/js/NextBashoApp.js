@@ -17,42 +17,42 @@ let BashoCard = {
         }
     },
     template: `
-      <b-card no-body class="overflow-hidden" style="max-width: 700px;">
+      <b-card no-body class="overflow-hidden">
         <b-row no-gutters>
           <b-col md="4">
             <div class="text-center">
-              <b-card-img src="assets/images/sumo.png" class="w-auto rounded-0"></b-card-img>
+              <b-card-img src="assets/images/sumo.png" class="w-auto mt-4 rounded-0"></b-card-img>
             </div>
           </b-col>
           <b-col md="8">
             <b-card-body title="Next Basho">
               <b-container>
-                <b-row class="justify-content-md-center">
+                <b-row class="justify-content-center">
                   <b-col cols="5">Basho name:</b-col>
                   <b-col cols="5">{{ nextBashoName }}</b-col>
                 </b-row>
-                <b-row class="justify-content-md-center">
+                <b-row class="justify-content-center">
                   <b-col cols="5">Venue:</b-col>
                   <b-col cols="5">{{ venue }}</b-col>
                 </b-row>
-                <b-row class="justify-content-md-center">
+                <b-row class="justify-content-center">
                   <b-col cols="5">First day:</b-col>
                   <b-col cols="5">{{ firstDay }}</b-col>
                 </b-row>
-                <b-row class="justify-content-md-center">
+                <b-row class="justify-content-center">
                   <b-col cols="5">Last day:</b-col>
                   <b-col cols="5">{{ finalDay }}</b-col>
                 </b-row>
-                <b-row v-if="started" class="justify-content-md-center">
+                <b-row v-if="started" class="justify-content-center mt-3">
                   <b-col cols="10">This basho has already started.</b-col>
                 </b-row>
-                <b-row v-else class="justify-content-md-center">
+                <b-row v-else class="justify-content-center mt-3">
                   <b-col cols="10">Days left till next basho:</b-col>
                 </b-row>
-                <b-row class="justify-content-md-center">
+                <b-row class="justify-content-center">
                   <b-col cols="10">
                     <b-progress
-                      class="mt-3"
+                      class="mt-2"
                       :max="progressMax"
                       striped
                       height="2rem">

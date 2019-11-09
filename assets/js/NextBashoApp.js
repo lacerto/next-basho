@@ -87,7 +87,7 @@ new Vue({
         BashoCard
     },
     mounted: function() {
-        const now = moment();
+        const now = moment().startOf('day');
         //const now = moment('2019-09-23'); // test
     
         console.log(`Current date: ${now.format('YYYY-MM-DD')}`);

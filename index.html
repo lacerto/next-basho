@@ -14,7 +14,8 @@
     <div id="next-basho-app">
       <b-container class="mt-4">
         <b-row class="justify-content-center mx-4 mx-1-sm">
-          <b-col md="8">
+          <b-col md="10">
+            <languages @change-language="handleLanguageChange" class="mb-2"></languages>
             <basho-card
               v-bind:next-basho-name="nextBasho"
               v-bind:venue="venue"
@@ -23,6 +24,7 @@
               v-bind:progress-max="max"
               v-bind:progress-value="value"
               v-bind:started="started"
+              v-bind:language="language"
               style="font-size: large;"
             >
             </basho-card>    

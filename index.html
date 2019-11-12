@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
     <title>Next Basho</title>
-    <link rel="stylesheet" href="main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-vue@2.0.4/dist/bootstrap-vue.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/min/moment.min.js"></script>
     <script src="assets/js/next_basho.js"></script>
   </head>
   <body>
-    <div id="next-basho-app" class="wrapper">
-      <basho-card
-        v-bind:next-basho-name="nextBasho"
-        v-bind:venue="venue"
-        v-bind:first-day="start"
-        v-bind:final-day="end"
-        v-bind:progress-max="max"
-        v-bind:progress-value="value"
-        v-bind:started="started"
-      >
-      </basho-card>
+    <div id="next-basho-app">
+      <b-container class="mt-4">
+        <b-row class="justify-content-center mx-4 mx-1-sm">
+          <b-col md="10">
+            <languages @change-language="handleLanguageChange" class="mb-2"></languages>
+            <basho-card
+              v-bind:next-basho-name="nextBasho"
+              v-bind:venue="venue"
+              v-bind:first-day="start"
+              v-bind:final-day="end"
+              v-bind:progress-max="max"
+              v-bind:progress-value="value"
+              v-bind:started="started"
+              v-bind:language="language"
+              style="font-size: large;"
+            >
+            </basho-card>    
+          </b-col>
+        </b-row>
+      </b-container>
     </div>
     <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-vue@2.0.4/dist/bootstrap-vue.min.js"></script>

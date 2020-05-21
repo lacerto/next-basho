@@ -18,9 +18,9 @@
     data() {
       return {
         activeItems: {
-          eo: false, 
+          eo: true, 
           de: false,
-          en: true, 
+          en: false, 
           hu: false 
         }
       }

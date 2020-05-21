@@ -1,3 +1,7 @@
+import getNextBasho from './next_basho.js';
+
+Object.defineProperty(Vue.prototype, '$moment', { value: moment });
+
 Vue.use(httpVueLoader);
 
 new Vue({
@@ -11,14 +15,15 @@ new Vue({
         end: '',
         prevBashoEnd: '',
         started: false,
-        language: 'en'
+        language: 'eo'
     },
     components: {
         'basho-card': 'url:/assets/js/components/BashoCard.vue',
-        'language-selector': 'url:/assets/js/components/LanguageSelector.vue'
+        'language-selector': 'url:/assets/js/components/LanguageSelector.vue',
+        'info-alert': 'url:/assets/js/components/InfoAlert.vue'
     },
     mounted: function() {
-        const now = moment().startOf('day');
+        const now = this.$moment().startOf('day');
         //const now = moment('2019-09-23'); // test
     
         console.log(`Current date: ${now.format('YYYY-MM-DD')}`);
@@ -34,13 +39,13 @@ new Vue({
                 started: this.started
             } = getNextBasho(now));
             if (this.started) {
-                let firstDay = moment(this.start);
-                let finalDay = moment(this.end);
+                let firstDay = this.$moment(this.start);
+                let finalDay = this.$moment(this.end);
                 this.max = finalDay.diff(firstDay, 'days') + 1;
                 this.value = now.diff(firstDay, 'days') + 1;        
             } else {
-                let firstDay = moment(this.start);
-                let prevFinalDay = moment(this.prevBashoEnd);
+                let firstDay = this.$moment(this.start);
+                let prevFinalDay = this.$moment(this.prevBashoEnd);
                 this.max = firstDay.diff(prevFinalDay, 'days');
                 this.value = now.diff(prevFinalDay, 'days');
             }

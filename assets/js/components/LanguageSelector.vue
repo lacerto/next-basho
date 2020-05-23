@@ -15,14 +15,27 @@
 
 <script>
   module.exports = {
+    props: {
+      language: String
+    },
+
     data() {
       return {
         activeItems: {
-          eo: true, 
+          eo: false, 
           de: false,
           en: false, 
           hu: false 
         }
+      }
+    },
+
+    created() {
+      if (this.language) {
+        Vue.set(this.activeItems, this.language, true);
+      } else {
+        // Default to Esperanto if no preference cookie found.
+        Vue.set(this.activeItems, 'eo', true);
       }
     },
 

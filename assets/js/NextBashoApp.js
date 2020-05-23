@@ -1,4 +1,5 @@
 import getNextBasho from './next_basho.js';
+import config from './config.js';
 
 Object.defineProperty(Vue.prototype, '$moment', { value: moment });
 
@@ -21,10 +22,10 @@ new Vue({
     },
 
     components: {
-        'basho-card': 'url:/assets/js/components/BashoCard.vue',
-        'language-selector': 'url:/assets/js/components/LanguageSelector.vue',
-        'info-alert': 'url:/assets/js/components/InfoAlert.vue',
-        'cookie-alert': 'url:/assets/js/components/CookieAlert.vue'
+        'basho-card': `url:${config.basePath}/assets/js/components/BashoCard.vue`,
+        'language-selector': `url:${config.basePath}/assets/js/components/LanguageSelector.vue`,
+        'info-alert': `url:${config.basePath}/assets/js/components/InfoAlert.vue`,
+        'cookie-alert': `url:${config.basePath}/assets/js/components/CookieAlert.vue`
     },
 
     created: function() {
@@ -76,12 +77,12 @@ new Vue({
         handleLanguageChange(lang) {
             this.language = lang;
             console.log(`Language changed to: ${lang}`);
-            this.$cookies.set('next-basho-lang', lang, '30d', '/', '', '', 'strict');
+            this.$cookies.set('next-basho-lang', lang, '30d', config.basePath, '', '', 'strict');
             console.log('Language changed: preference cookie has been set.')            
         },
 
         handleCookieAlertDismissed() {
-            this.$cookies.set('next-basho-cookie-alert', true, '30d', '/', '', '', 'strict');
+            this.$cookies.set('next-basho-cookie-alert', true, '30d', config.basePath, '', '', 'strict');
             console.log('CookieAlert dismissed: preference cookie has been set.');
         }
     }

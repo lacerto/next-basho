@@ -21,14 +21,18 @@
         data() {
             return {
                 text: {
-                    eo: 'Ĉi tiu aplikaĵo konservas vian ligvoagordon en retumila kuketo.<br>\
-                         Ĝi ne konservas aliajn datenojn kaj ne sendas ĉiajn ajn datenojn al la servilo.',
-                    de: 'Diese Applikation speichert Ihre Spracheinstellungen in einem Browser Cookie.<br>\
-                         Es werden keine anderen Daten gespeichert oder an den Server geschickt.',
-                    en: 'This application stores your language preferences in a browser cookie.<br>\
-                         It does not store any other data nor does it send any data whatsoever to the server.',
-                    hu: 'Ez az alkalmazás egy böngésző sütiben tárolja az Ön nyelvi beállításait.<br>\
-                         Az alkalmazás semmilyen más adatot nem tárol és nem is küld a szerver felé.'
+                    eo: 'Tiu ĉi aplikaĵo konservas vian ligvoagordon kaj la staton de tiu ĉi mesaĝo (videbla aŭ fermita) en retumilaj kuketoj.<br>\
+                         Ĝi ne konservas aliajn datenojn kaj ne sendas ĉiajn ajn datenojn al la servilo.<br>\
+                         Vi povas fermi tiun ĉi mesaĝon per X.',
+                    de: 'Diese Applikation speichert Ihre Spracheinstellungen und den Status dieser Nachricht (sichtbar oder geschlossen) in Browser Cookies.<br>\
+                         Es werden keine anderen Daten gespeichert oder an den Server geschickt.<br>\
+                         Diese Nachricht kann mittels X geschlossen werden.',
+                    en: 'This application stores your language preferences and the state of this message (visible or closed) in browser cookies.<br>\
+                         It does not store any other data nor does it send any data whatsoever to the server.<br>\
+                         You can close this message with the X.',
+                    hu: 'Ez az alkalmazás böngésző sütikben tárolja az Ön nyelvi beállításait és ezen üzenet állapotát (látható illetve rejtett).<br>\
+                         Az alkalmazás semmilyen más adatot nem tárol és nem is küld a szerver felé.<br>\
+                         Az X-szel bezárhatja ezt az üzenetet.'
                 }
             }
         },

@@ -35,7 +35,11 @@
               style="font-size: large;"
             >
             </basho-card>
-            <cookie-alert :language="language">
+            <cookie-alert
+              :show-alert="showCookieAlert"
+              :language="language"
+              @cookie-alert-dismissed="handleCookieAlertDismissed"
+            >
             </cookie-alert>  
           </b-col>
         </b-row>

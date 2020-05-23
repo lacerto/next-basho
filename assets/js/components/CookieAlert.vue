@@ -1,8 +1,9 @@
 <template>
     <b-alert 
-        show
+        :show="showAlert"
         dismissible
         variant="light"
+        @dismissed="handleDismissed"
     >
       <!-- Dismissible property + v-html issue: -->
       <!-- https://github.com/bootstrap-vue/bootstrap-vue/issues/489 -->
@@ -13,14 +14,15 @@
 <script>
     module.exports = {
         props: {
-            language: String
+            language: String,
+            showAlert: Boolean
         },
 
         data() {
             return {
                 text: {
                     eo: 'Ĉi tiu aplikaĵo konservas vian ligvoagordon en retumila kuketo.<br>\
-                         La apo ne konservas aliajn datenojn kaj ĝi ne sendas ĉiajn ajn datenojn al la servilo.',
+                         Ĝi ne konservas aliajn datenojn kaj ne sendas ĉiajn ajn datenojn al la servilo.',
                     de: 'Diese Applikation speichert Ihre Spracheinstellungen in einem Browser Cookie.<br>\
                          Es werden keine anderen Daten gespeichert oder an den Server geschickt.',
                     en: 'This application stores your language preferences in a browser cookie.<br>\
@@ -28,6 +30,13 @@
                     hu: 'Ez az alkalmazás egy böngésző sütiben tárolja az Ön nyelvi beállításait.<br>\
                          Az alkalmazás semmilyen más adatot nem tárol és nem is küld a szerver felé.'
                 }
+            }
+        },
+
+        methods: {
+            handleDismissed() {
+                console.log('CookieAlert has been dismissed.');
+                this.$emit('cookie-alert-dismissed');
             }
         }
     }

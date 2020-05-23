@@ -22,6 +22,12 @@ new Vue({
         'language-selector': 'url:/assets/js/components/LanguageSelector.vue',
         'info-alert': 'url:/assets/js/components/InfoAlert.vue'
     },
+    created: function() {
+        let lang = this.$cookies.get('next-basho-lang');
+        if (lang) {
+            this.language = lang;
+        }
+    },
     mounted: function() {
         const now = this.$moment().startOf('day');
         //const now = moment('2019-09-23'); // test
@@ -57,6 +63,7 @@ new Vue({
       handleLanguageChange(lang) {
         console.log(lang);
         this.language = lang;
+        this.$cookies.set('next-basho-lang', lang, '30d', '/', '', '', 'strict');
       }
     }
 });

@@ -35,10 +35,8 @@
               style="font-size: large;"
             >
             </basho-card>
-            <b-alert show variant="light">
-              This application stores your language preferences in a browser cookie.<br>
-              It does not store any other data nor does it send any data whatsoever to the server.
-            </b-alert>  
+            <cookie-alert :language="language">
+            </cookie-alert>  
           </b-col>
         </b-row>
       </b-container>

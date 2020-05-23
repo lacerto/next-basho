@@ -20,7 +20,8 @@ new Vue({
     components: {
         'basho-card': 'url:/assets/js/components/BashoCard.vue',
         'language-selector': 'url:/assets/js/components/LanguageSelector.vue',
-        'info-alert': 'url:/assets/js/components/InfoAlert.vue'
+        'info-alert': 'url:/assets/js/components/InfoAlert.vue',
+        'cookie-alert': 'url:/assets/js/components/CookieAlert.vue'
     },
     created: function() {
         let lang = this.$cookies.get('next-basho-lang');
